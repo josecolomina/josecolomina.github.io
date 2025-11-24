@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,12 +29,11 @@
             background-color: var(--bg-color);
             color: var(--text);
             overflow-x: hidden;
-            /* Fondo base */
             background-image: 
                 linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
-            background-attachment: fixed; /* Efecto base de parallax */
+            background-attachment: fixed;
         }
 
         /* --- LUCES AMBIENTALES --- */
@@ -153,12 +153,10 @@
             background: var(--card-bg); border-radius: 16px; position: relative;
             border: 1px solid var(--border); padding: 30px; cursor: default;
             overflow: hidden; transition: transform 0.3s;
-            /* Blur effect inicial para animación */
             backdrop-filter: blur(5px);
         }
         .card:hover { transform: translateY(-5px); }
 
-        /* Efecto Spotlight */
         .card::before {
             content: ""; position: absolute; top: 0; left: 0; height: 100%; width: 100%;
             border-radius: inherit; opacity: 0; transition: opacity 0.5s;
@@ -174,15 +172,12 @@
         }
         .card:hover::after { opacity: 1; }
 
-        /* CORRECCIÓN IMPORTANTE DE CSS:
-           z-index: 10 asegura que el contenido esté SOBRE los efectos de luz (que tienen z-index 3)
-        */
         .card-content { position: relative; z-index: 10; }
 
         .card-title { font-size: 1.5rem; margin-bottom: 15px; display: flex; align-items: center; gap: 12px; color: #fff; }
         .card-title i { color: var(--primary); }
         
-        /* --- ESTILOS FORMACIÓN (CERTIFICACIONES) --- */
+        /* --- ESTILOS FORMACIÓN --- */
         .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 20px; width: 100%; }
         .cert-card {
             background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
@@ -245,24 +240,20 @@
             .cert-grid { grid-template-columns: 1fr; }
         }
 
-        /* --- ANIMACIÓN DE ENTRADA MEJORADA --- */
+        /* --- ANIMACIÓN --- */
         .hidden { 
             opacity: 0; 
-            filter: blur(10px); /* Efecto de desenfoque inicial */
+            filter: blur(10px); 
             transform: translateY(40px); 
-            transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1); /* Easing suave */
+            transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
-        .show { 
-            opacity: 1; 
-            filter: blur(0); 
-            transform: translateY(0); 
-        }
+        .show { opacity: 1; filter: blur(0); transform: translateY(0); }
         
-        /* Retrasos en cascada para elementos hijos */
         .stagger-1 { transition-delay: 100ms; }
         .stagger-2 { transition-delay: 200ms; }
         .stagger-3 { transition-delay: 300ms; }
         .stagger-4 { transition-delay: 400ms; }
+        .stagger-5 { transition-delay: 500ms; }
     </style>
 </head>
 <body>
@@ -417,6 +408,24 @@
         <div class="cards-container">
             <div class="card hidden stagger-1">
                 <div class="card-content">
+                    <div class="card-title"><i class="fas fa-shield-alt"></i> Detección de Fraude Real-Time</div>
+                    <p style="color: var(--text-gray);">
+                        Arquitectura híbrida Event-Driven. Ingesta de transacciones masivas con Spring Boot, streaming vía Apache Kafka y análisis de fraude instantáneo con motor ML en Python.
+                    </p>
+                    <div class="tech-tags">
+                        <div class="tag">Spring Boot</div>
+                        <div class="tag">Kafka</div>
+                        <div class="tag">Python ML</div>
+                        <div class="tag">Docker</div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/josecolomina" target="_blank" class="project-link"><i class="fab fa-github"></i> Ver Código</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card hidden stagger-2">
+                <div class="card-content">
                     <div class="card-title"><i class="fas fa-chart-line"></i> Analizador de Datos</div>
                     <p style="color: var(--text-gray);">
                         Pipeline de datos automatizado con Python que procesa grandes volúmenes de información y genera visualizaciones predictivas.
@@ -432,7 +441,7 @@
                 </div>
             </div>
 
-            <div class="card hidden stagger-2">
+            <div class="card hidden stagger-3">
                 <div class="card-content">
                     <div class="card-title"><i class="fas fa-network-wired"></i> API REST Segura</div>
                     <p style="color: var(--text-gray);">
@@ -449,7 +458,7 @@
                 </div>
             </div>
 
-            <div class="card hidden stagger-3">
+            <div class="card hidden stagger-4">
                 <div class="card-content">
                     <div class="card-title"><i class="fas fa-robot"></i> Chatbot IA (RAG)</div>
                     <p style="color: var(--text-gray);">
@@ -466,7 +475,7 @@
                 </div>
             </div>
 
-            <div class="card hidden stagger-4">
+            <div class="card hidden stagger-5">
                 <div class="card-content">
                     <div class="card-title"><i class="fas fa-tachometer-alt"></i> Dashboard Real-Time</div>
                     <p style="color: var(--text-gray);">
@@ -595,10 +604,9 @@
     </footer>
 
     <script>
-
-        // --- SCRIPT PARA AÑO AUTOMÁTICO ---
         document.getElementById("year").textContent = new Date().getFullYear();
-        // 1. EFECTO SPOTLIGHT EN TARJETAS
+        
+        // EFECTO SPOTLIGHT
         document.body.onmousemove = e => {
             for(const card of document.getElementsByClassName("card")) {
                 const rect = card.getBoundingClientRect(),
@@ -607,16 +615,9 @@
                 card.style.setProperty("--mouse-x", `${x}px`);
                 card.style.setProperty("--mouse-y", `${y}px`);
             }
-            // También aplicamos a las nuevas tarjetas de certificados
-            for(const cert of document.getElementsByClassName("cert-card")) {
-                const rect = cert.getBoundingClientRect(),
-                      x = e.clientX - rect.left,
-                      y = e.clientY - rect.top;
-                // Nota: cert-card no usa la variable spotlight, pero si quisieras añadirlo en el futuro, ya está trackeando
-            }
         };
 
-        // 2. EFECTO TYPEWRITER
+        // EFECTO TYPEWRITER
         const textToType = "Software Developer | Data Enthusiast | AI Explorer";
         const typeWriterElement = document.getElementById('typing-text');
         let i = 0;
@@ -630,24 +631,22 @@
         }
         setTimeout(typeWriter, 1000);
 
-        // 3. ANIMACIÓN DE SCROLL CON EFECTO BLUR Y CASCADA
+        // ANIMACIÓN DE SCROLL
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
                 }
             });
-        }, { threshold: 0.1 }); // Se activa cuando el 10% del elemento es visible
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
-        // 4. EFECTO PARALLAX SUAVE EN EL BACKGROUND
+        // PARALLAX SUAVE
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            // Movemos el background position verticalmente más lento que el scroll
             document.body.style.backgroundPosition = `0px ${scrolled * 0.5}px`;
         });
-
     </script>
 </body>
 </html>
