@@ -4,7 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Jose Colomina Alvarez | Data & Software Engineer</title>
+    <meta name="description"
+        content="Portfolio de Jose Colomina Alvarez. Ingeniero de Software y Datos especializado en Java, Spring Boot, Python, Big Data e IA.">
+    <meta name="author" content="Jose Colomina Alvarez">
+
+    <meta property="og:title" content="Jose Colomina | Data & Software Engineer">
+    <meta property="og:description"
+        content="Especialista en arquitecturas escalables, Spring Boot, Kafka e Inteligencia Artificial.">
+    <meta property="og:type" content="website">
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -36,13 +45,11 @@
             background-color: var(--bg-color);
             color: var(--text);
             overflow-x: hidden;
-            /* Fondo base */
             background-image:
                 linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             background-attachment: fixed;
-            /* Efecto base de parallax */
         }
 
         /* --- LUCES AMBIENTALES --- */
@@ -299,7 +306,6 @@
             cursor: default;
             overflow: hidden;
             transition: transform 0.3s;
-            /* Blur effect inicial para animación */
             backdrop-filter: blur(5px);
         }
 
@@ -347,9 +353,6 @@
             opacity: 1;
         }
 
-        /* CORRECCIÓN IMPORTANTE DE CSS:
-           z-index: 10 asegura que el contenido esté SOBRE los efectos de luz (que tienen z-index 3)
-        */
         .card-content {
             position: relative;
             z-index: 10;
@@ -368,7 +371,7 @@
             color: var(--primary);
         }
 
-        /* --- ESTILOS FORMACIÓN (CERTIFICACIONES) --- */
+        /* --- CERTIFICACIONES --- */
         .cert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -410,7 +413,7 @@
             color: var(--text-gray);
         }
 
-        /* --- ESTILOS EXPERIENCIA --- */
+        /* --- EXPERIENCIA --- */
         .exp-header {
             display: flex;
             justify-content: space-between;
@@ -454,7 +457,7 @@
             padding-left: 10px;
         }
 
-        /* --- ESTILOS PROYECTOS --- */
+        /* --- PROYECTOS --- */
         .project-links {
             margin-top: 15px;
             display: flex;
@@ -475,7 +478,7 @@
             color: var(--primary);
         }
 
-        /* --- ESTILOS BIO & IDIOMAS --- */
+        /* --- BIO & IDIOMAS --- */
         .lang-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -580,37 +583,12 @@
             margin-top: 50px;
         }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .cards-container {
-                grid-template-columns: 1fr;
-            }
-
-            .lang-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cert-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* --- ANIMACIÓN DE ENTRADA MEJORADA --- */
+        /* --- ANIMACIONES --- */
         .hidden {
             opacity: 0;
             filter: blur(10px);
-            /* Efecto de desenfoque inicial */
             transform: translateY(40px);
             transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-            /* Easing suave */
         }
 
         .show {
@@ -619,7 +597,7 @@
             transform: translateY(0);
         }
 
-        /* Retrasos en cascada para elementos hijos */
+        /* Retrasos en cascada */
         .stagger-1 {
             transition-delay: 100ms;
         }
@@ -634,6 +612,43 @@
 
         .stagger-4 {
             transition-delay: 400ms;
+        }
+
+        .stagger-5 {
+            transition-delay: 500ms;
+        }
+
+        /* --- RESPONSIVE MEJORADO --- */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            nav {
+                flex-direction: column;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 15px;
+                font-size: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .lang-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -745,9 +760,7 @@
                         </div>
                         <span class="date active">2025 - Actualidad</span>
                     </div>
-                    <div class="client-info">
-                        Cliente: Generalitat de Catalunya
-                    </div>
+                    <div class="client-info">Cliente: Generalitat de Catalunya</div>
                     <p style="color: var(--text-gray);">
                         Desarrollo y mantenimiento de sistemas críticos para la administración pública.
                         Implementación de soluciones escalables y optimización de procesos existentes.
@@ -769,9 +782,7 @@
                         </div>
                         <span class="date">2024 - 2025</span>
                     </div>
-                    <div class="client-info">
-                        Cliente: CaixaBank
-                    </div>
+                    <div class="client-info">Cliente: CaixaBank</div>
                     <p style="color: var(--text-gray);">
                         Participación activa en proyectos del sector bancario, asegurando la integridad de datos
                         y colaborando en la migración de sistemas legacy.
@@ -790,45 +801,30 @@
         <h2 class="hidden">Proyectos <span style="color:var(--primary)">Destacados</span></h2>
 
         <div class="cards-container">
+
             <div class="card hidden stagger-1">
                 <div class="card-content">
-                    <div class="card-title"><i class="fas fa-chart-line"></i> Analizador de Datos</div>
+                    <div class="card-title"><i class="fas fa-shield-alt"></i> Detección Fraude Real-Time</div>
                     <p style="color: var(--text-gray);">
-                        Pipeline de datos automatizado con Python que procesa grandes volúmenes de información y genera
-                        visualizaciones predictivas.
+                        Sistema híbrido orientado a eventos. Ingesta con Java/Spring, streaming vía Kafka y detección de
+                        anomalías con Python (Isolation Forest).
                     </p>
                     <div class="tech-tags">
-                        <div class="tag">Python</div>
-                        <div class="tag">Pandas</div>
-                        <div class="tag">Matplotlib</div>
+                        <div class="tag">Spring Boot</div>
+                        <div class="tag">Apache Kafka</div>
+                        <div class="tag">Python ML</div>
+                        <div class="tag">Docker</div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/josecolomina/Analizador-de-datos" target="_blank"
-                            class="project-link"><i class="fab fa-github"></i> Ver Código</a>
+                        <a href="https://github.com/josecolomina/Sistema-de-Detecci-n-de-Fraude" target="_blank"
+                            class="project-link">
+                            <i class="fab fa-github"></i> Ver Código
+                        </a>
                     </div>
                 </div>
             </div>
 
             <div class="card hidden stagger-2">
-                <div class="card-content">
-                    <div class="card-title"><i class="fas fa-network-wired"></i> API REST Segura</div>
-                    <p style="color: var(--text-gray);">
-                        Arquitectura de microservicios con Spring Boot, implementando seguridad con JWT y documentación
-                        automática con Swagger.
-                    </p>
-                    <div class="tech-tags">
-                        <div class="tag">Java</div>
-                        <div class="tag">Spring Boot</div>
-                        <div class="tag">JWT</div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/josecolomina/Api-Rest" target="_blank" class="project-link"><i
-                                class="fab fa-github"></i> Ver Código</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card hidden stagger-3">
                 <div class="card-content">
                     <div class="card-title"><i class="fas fa-robot"></i> Chatbot IA (RAG)</div>
                     <p style="color: var(--text-gray);">
@@ -841,8 +837,29 @@
                         <div class="tag">Vector DB</div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/josecolomina/chatbot-ia-rag-" target="_blank"
-                            class="project-link"><i class="fab fa-github"></i> Ver Código</a>
+                        <a href="https://github.com/josecolomina/chatbot-ia-rag-" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> Ver Código
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card hidden stagger-3">
+                <div class="card-content">
+                    <div class="card-title"><i class="fas fa-network-wired"></i> API REST Segura</div>
+                    <p style="color: var(--text-gray);">
+                        Arquitectura de microservicios con Spring Boot, implementando seguridad con JWT y documentación
+                        automática con Swagger.
+                    </p>
+                    <div class="tech-tags">
+                        <div class="tag">Java</div>
+                        <div class="tag">Spring Boot</div>
+                        <div class="tag">JWT</div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/josecolomina/Api-Rest" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> Ver Código
+                        </a>
                     </div>
                 </div>
             </div>
@@ -861,26 +878,27 @@
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/josecolomina/-Dashboard-Real-Time" target="_blank"
-                            class="project-link"><i class="fab fa-github"></i> Ver Código</a>
+                            class="project-link">
+                            <i class="fab fa-github"></i> Ver Código
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <div class="card hidden stagger-1">
+            <div class="card hidden stagger-5">
                 <div class="card-content">
-                    <div class="card-title"><i class="fas fa-shield-alt"></i> Detección Fraude Real-Time</div>
+                    <div class="card-title"><i class="fas fa-chart-line"></i> Analizador de Datos</div>
                     <p style="color: var(--text-gray);">
-                        Sistema híbrido de alto rendimiento orientado a eventos. Ingesta con Java/Spring, streaming vía
-                        Kafka y detección de anomalías con Python (Isolation Forest).
+                        Pipeline de datos automatizado con Python que procesa grandes volúmenes de información y genera
+                        visualizaciones predictivas.
                     </p>
                     <div class="tech-tags">
-                        <div class="tag">Spring Boot</div>
-                        <div class="tag">Apache Kafka</div>
-                        <div class="tag">Python ML</div>
-                        <div class="tag">Docker</div>
+                        <div class="tag">Python</div>
+                        <div class="tag">Pandas</div>
+                        <div class="tag">Matplotlib</div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/josecolomina/Sistema-de-Detecci-n-de-Fraude" target="_blank"
+                        <a href="https://github.com/josecolomina/Analizador-de-datos" target="_blank"
                             class="project-link">
                             <i class="fab fa-github"></i> Ver Código
                         </a>
@@ -986,12 +1004,12 @@
         </div>
 
         <div class="hidden" style="margin-top: 40px; font-size: 2rem;">
-            <a href="https://www.linkedin.com/in/jose-colomina-b097b0261/" target="_blank"
+            <a href="https://www.linkedin.com/in/jose-colomina-b097b0261/" target="_blank" aria-label="LinkedIn"
                 style="color: var(--text-gray); margin: 0 20px; transition: 0.3s;"
                 onmouseover="this.style.color='#0e76a8'" onmouseout="this.style.color='var(--text-gray)'">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://github.com/josecolomina" target="_blank"
+            <a href="https://github.com/josecolomina" target="_blank" aria-label="GitHub"
                 style="color: var(--text-gray); margin: 0 20px; transition: 0.3s;" onmouseover="this.style.color='#fff'"
                 onmouseout="this.style.color='var(--text-gray)'">
                 <i class="fab fa-github"></i>
@@ -1000,65 +1018,76 @@
     </section>
 
     <footer>
-        <p>
-            &copy; <span id="year"></span> Jose Colomina Alvarez. All rights reserved.
-        </p>
+        <p>&copy; <span id="year"></span> Jose Colomina Alvarez. All rights reserved.</p>
     </footer>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            try {
+                // --- AÑO AUTOMÁTICO ---
+                const yearEl = document.getElementById("year");
+                if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-        // --- SCRIPT PARA AÑO AUTOMÁTICO ---
-        document.getElementById("year").textContent = new Date().getFullYear();
-        // 1. EFECTO SPOTLIGHT EN TARJETAS
-        document.body.onmousemove = e => {
-            for (const card of document.getElementsByClassName("card")) {
-                const rect = card.getBoundingClientRect(),
-                    x = e.clientX - rect.left,
-                    y = e.clientY - rect.top;
-                card.style.setProperty("--mouse-x", `${x}px`);
-                card.style.setProperty("--mouse-y", `${y}px`);
-            }
-            // También aplicamos a las nuevas tarjetas de certificados
-            for (const cert of document.getElementsByClassName("cert-card")) {
-                const rect = cert.getBoundingClientRect(),
-                    x = e.clientX - rect.left,
-                    y = e.clientY - rect.top;
-                // Nota: cert-card no usa la variable spotlight, pero si quisieras añadirlo en el futuro, ya está trackeando
-            }
-        };
+                // 1. EFECTO SPOTLIGHT
+                document.body.onmousemove = e => {
+                    for (const card of document.getElementsByClassName("card")) {
+                        const rect = card.getBoundingClientRect(),
+                            x = e.clientX - rect.left,
+                            y = e.clientY - rect.top;
+                        card.style.setProperty("--mouse-x", `${x}px`);
+                        card.style.setProperty("--mouse-y", `${y}px`);
+                    }
+                };
 
-        // 2. EFECTO TYPEWRITER
-        const textToType = "Software Developer | Data Enthusiast | AI Explorer";
-        const typeWriterElement = document.getElementById('typing-text');
-        let i = 0;
+                // 2. EFECTO TYPEWRITER
+                const textToType = "Software Developer | Data Enthusiast | AI Explorer";
+                const typeWriterElement = document.getElementById('typing-text');
+                let i = 0;
 
-        function typeWriter() {
-            if (i < textToType.length) {
-                typeWriterElement.innerHTML += textToType.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
-            }
-        }
-        setTimeout(typeWriter, 1000);
-
-        // 3. ANIMACIÓN DE SCROLL CON EFECTO BLUR Y CASCADA
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
+                function typeWriter() {
+                    if (typeWriterElement && i < textToType.length) {
+                        typeWriterElement.innerHTML += textToType.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 50);
+                    }
                 }
-            });
-        }, { threshold: 0.1 }); // Se activa cuando el 10% del elemento es visible
+                setTimeout(typeWriter, 1000);
 
-        document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+                // 3. ANIMACIÓN DE SCROLL (EL PUNTO CRÍTICO)
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('show');
+                        }
+                    });
+                }, { threshold: 0.1 });
 
-        // 4. EFECTO PARALLAX SUAVE EN EL BACKGROUND
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            // Movemos el background position verticalmente más lento que el scroll
-            document.body.style.backgroundPosition = `0px ${scrolled * 0.5}px`;
+                const hiddenElements = document.querySelectorAll('.hidden');
+                hiddenElements.forEach((el) => observer.observe(el));
+
+                // --- FAILSAFE (SEGURIDAD) ---
+                // Si por alguna razón el observador falla o el navegador es antiguo,
+                // forzamos que se muestre todo después de 0.5 segundos para que
+                // nunca veas la pantalla en blanco.
+                setTimeout(() => {
+                    if (document.querySelector('.hidden') && !document.querySelector('.show')) {
+                        console.warn("Activando modo fallback para visualización.");
+                        hiddenElements.forEach(el => el.classList.add('show'));
+                    }
+                }, 1000);
+
+            } catch (error) {
+                console.error("Error en scripts:", error);
+                // En caso de error crítico, mostrar todo
+                document.querySelectorAll('.hidden').forEach(el => el.style.opacity = 1);
+            }
         });
 
+        // 4. PARALLAX
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            document.body.style.backgroundPosition = `0px ${scrolled * 0.5}px`;
+        });
     </script>
 </body>
 
