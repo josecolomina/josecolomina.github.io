@@ -1,102 +1,193 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jose Colomina Alvarez | Data & Software Engineer</title>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    
+
     <style>
         /* --- CONFIGURACIÓN VISUAL --- */
         :root {
             --bg-color: #080808;
             --card-bg: rgba(23, 23, 23, 0.6);
-            --primary: #00d2ff; /* Cian Datos */
-            --secondary: #9d00ff; /* Violeta IA */
+            --primary: #00d2ff;
+            /* Cian Datos */
+            --secondary: #9d00ff;
+            /* Violeta IA */
             --text: #ffffff;
             --text-gray: #a1a1aa;
             --border: rgba(255, 255, 255, 0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Outfit', sans-serif;
             background-color: var(--bg-color);
             color: var(--text);
             overflow-x: hidden;
-            background-image: 
+            /* Fondo base */
+            background-image:
                 linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             background-attachment: fixed;
+            /* Efecto base de parallax */
         }
 
         /* --- LUCES AMBIENTALES --- */
         .ambient-light {
-            position: fixed; width: 600px; height: 600px;
-            border-radius: 50%; filter: blur(120px); opacity: 0.3; z-index: -1;
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.3;
+            z-index: -1;
             animation: pulse 10s infinite alternate;
         }
-        .light-1 { top: -100px; left: -100px; background: var(--secondary); }
-        .light-2 { bottom: -100px; right: -100px; background: var(--primary); animation-delay: 5s; }
+
+        .light-1 {
+            top: -100px;
+            left: -100px;
+            background: var(--secondary);
+        }
+
+        .light-2 {
+            bottom: -100px;
+            right: -100px;
+            background: var(--primary);
+            animation-delay: 5s;
+        }
 
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.3; }
-            100% { transform: scale(1.2); opacity: 0.5; }
+            0% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 0.5;
+            }
         }
 
         /* --- NAVEGACIÓN --- */
         nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 25px 50px; position: fixed; width: 100%; z-index: 100;
-            backdrop-filter: blur(15px); border-bottom: 1px solid var(--border);
-            background: rgba(8, 8, 8, 0.8); transition: 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 50px;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            background: rgba(8, 8, 8, 0.8);
+            transition: 0.3s;
         }
-        .logo { font-weight: 800; font-size: 1.4rem; letter-spacing: 1px; text-transform: uppercase; }
-        .logo span { color: var(--primary); }
 
-        .nav-links { display: flex; gap: 30px; }
-        .nav-links a { 
-            text-decoration: none; color: var(--text-gray); font-size: 0.9rem; 
-            transition: 0.3s; position: relative;
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
-        .nav-links a:hover { color: var(--text); }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
         .nav-links a::after {
-            content: ''; position: absolute; bottom: -5px; left: 0; width: 0%; height: 2px;
-            background: var(--primary); transition: 0.3s;
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: var(--primary);
+            transition: 0.3s;
         }
-        .nav-links a:hover::after { width: 100%; }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
 
         /* --- SECCIONES --- */
         section {
-            min-height: 100vh; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; padding: 120px 20px 100px;
-            max-width: 1200px; margin: 0 auto; position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 20px 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
         }
 
         h2 {
-            font-size: 2.5rem; margin-bottom: 40px; text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
         }
 
         /* --- HERO SECTION --- */
-        .hero-content { text-align: center; z-index: 2; width: 100%; }
-        
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            width: 100%;
+        }
+
         .role-badge {
-            background: rgba(255, 255, 255, 0.05); padding: 8px 20px; border-radius: 30px;
-            border: 1px solid var(--border); display: inline-block; margin-bottom: 20px;
-            font-size: 0.9rem; color: var(--primary); font-weight: 600; letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 1px;
             box-shadow: 0 0 20px rgba(0, 210, 255, 0.1);
         }
 
-        h1 { 
-            font-size: 5rem; font-weight: 800; line-height: 1; margin-bottom: 20px; 
+        h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 20px;
             background: linear-gradient(to right, #fff, #a5a5a5);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .gradient-text {
@@ -107,155 +198,446 @@
             animation: gradient-move 4s linear infinite;
         }
 
-        @keyframes gradient-move { 0% { background-position: 0%; } 100% { background-position: 200%; } }
+        @keyframes gradient-move {
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 200%;
+            }
+        }
 
         .typewriter {
-            font-family: monospace; font-size: 1.2rem; color: var(--text-gray); min-height: 1.6em; margin-bottom: 30px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            min-height: 1.6em;
+            margin-bottom: 30px;
         }
-        .cursor { display: inline-block; width: 10px; height: 20px; background: var(--secondary); animation: blink 1s infinite; vertical-align: middle; }
-        @keyframes blink { 50% { opacity: 0; } }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: var(--secondary);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
 
         /* --- BOTONES --- */
-        .btn-container { margin-top: 20px; } 
+        .btn-container {
+            margin-top: 20px;
+        }
 
         .btn {
             display: inline-block;
-            padding: 15px 40px; border-radius: 30px;
+            padding: 15px 40px;
+            border-radius: 30px;
             background: linear-gradient(90deg, var(--secondary), var(--primary));
-            color: white; font-weight: 700; text-decoration: none; border: none;
-            box-shadow: 0 10px 30px rgba(157, 0, 255, 0.3); transition: 0.3s;
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            box-shadow: 0 10px 30px rgba(157, 0, 255, 0.3);
+            transition: 0.3s;
             cursor: pointer;
         }
-        .btn:hover { box-shadow: 0 10px 50px rgba(0, 210, 255, 0.5); transform: scale(1.05); }
-        
+
+        .btn:hover {
+            box-shadow: 0 10px 50px rgba(0, 210, 255, 0.5);
+            transform: scale(1.05);
+        }
+
         .btn-outline {
             display: inline-block;
-            padding: 12px 30px; border-radius: 30px;
+            padding: 12px 30px;
+            border-radius: 30px;
             background: transparent;
-            color: var(--primary); font-weight: 600; text-decoration: none; 
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
             border: 1px solid var(--primary);
             transition: 0.3s;
             margin-top: 20px;
         }
-        .btn-outline:hover { background: rgba(0, 210, 255, 0.1); transform: translateY(-2px); }
+
+        .btn-outline:hover {
+            background: rgba(0, 210, 255, 0.1);
+            transform: translateY(-2px);
+        }
 
         /* --- CARDS GENERICAS --- */
         .cards-container {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px; width: 100%; margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-top: 20px;
         }
 
         .experience-container {
-            display: flex; flex-direction: column; gap: 30px; width: 100%; max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+            max-width: 800px;
         }
 
         .card {
-            background: var(--card-bg); border-radius: 16px; position: relative;
-            border: 1px solid var(--border); padding: 30px; cursor: default;
-            overflow: hidden; transition: transform 0.3s;
+            background: var(--card-bg);
+            border-radius: 16px;
+            position: relative;
+            border: 1px solid var(--border);
+            padding: 30px;
+            cursor: default;
+            overflow: hidden;
+            transition: transform 0.3s;
+            /* Blur effect inicial para animación */
             backdrop-filter: blur(5px);
         }
-        .card:hover { transform: translateY(-5px); }
 
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Efecto Spotlight */
         .card::before {
-            content: ""; position: absolute; top: 0; left: 0; height: 100%; width: 100%;
-            border-radius: inherit; opacity: 0; transition: opacity 0.5s;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.5s;
             background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.08), transparent 40%);
-            z-index: 1; pointer-events: none;
+            z-index: 1;
+            pointer-events: none;
         }
-        .card:hover::before { opacity: 1; }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
         .card::after {
-            content: ""; position: absolute; top: 0; left: 0; height: 100%; width: 100%;
-            border-radius: inherit; opacity: 0; transition: opacity 0.5s;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.5s;
             background: radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.3), transparent 40%);
-            z-index: 3; pointer-events: none; mix-blend-mode: overlay;
+            z-index: 3;
+            pointer-events: none;
+            mix-blend-mode: overlay;
         }
-        .card:hover::after { opacity: 1; }
 
-        .card-content { position: relative; z-index: 10; }
+        .card:hover::after {
+            opacity: 1;
+        }
 
-        .card-title { font-size: 1.5rem; margin-bottom: 15px; display: flex; align-items: center; gap: 12px; color: #fff; }
-        .card-title i { color: var(--primary); }
-        
-        /* --- ESTILOS FORMACIÓN --- */
-        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 20px; width: 100%; }
+        /* CORRECCIÓN IMPORTANTE DE CSS:
+           z-index: 10 asegura que el contenido esté SOBRE los efectos de luz (que tienen z-index 3)
+        */
+        .card-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+        }
+
+        .card-title i {
+            color: var(--primary);
+        }
+
+        /* --- ESTILOS FORMACIÓN (CERTIFICACIONES) --- */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
         .cert-card {
-            background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border);
-            padding: 20px; border-radius: 12px; display: flex; align-items: center; gap: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
             transition: 0.3s;
         }
-        .cert-card:hover { background: rgba(255, 255, 255, 0.06); border-color: var(--primary); transform: translateX(5px); }
-        .cert-icon { font-size: 1.5rem; color: var(--secondary); }
-        .cert-info h4 { font-size: 1rem; color: #fff; margin-bottom: 4px; }
-        .cert-info span { font-size: 0.8rem; color: var(--text-gray); }
+
+        .cert-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .cert-icon {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .cert-info h4 {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .cert-info span {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
 
         /* --- ESTILOS EXPERIENCIA --- */
-        .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;}
-        .company { font-size: 1.3rem; font-weight: 700; color: #fff; }
-        .role { color: var(--primary); font-weight: 600; }
-        .date { font-size: 0.85rem; color: var(--text-gray); background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 20px; }
-        .date.active { background: rgba(0, 210, 255, 0.1); color: var(--primary); border: 1px solid rgba(0, 210, 255, 0.3); }
-        .client-info { font-style: italic; color: var(--text-gray); margin-bottom: 15px; font-size: 0.9rem; border-left: 2px solid var(--secondary); padding-left: 10px; }
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .company {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .role {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .date.active {
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+        }
+
+        .client-info {
+            font-style: italic;
+            color: var(--text-gray);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            border-left: 2px solid var(--secondary);
+            padding-left: 10px;
+        }
 
         /* --- ESTILOS PROYECTOS --- */
-        .project-links { margin-top: 15px; display: flex; gap: 15px; }
-        .project-link { color: var(--text-gray); font-size: 0.9rem; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: 0.3s; }
-        .project-link:hover { color: var(--primary); }
+        .project-links {
+            margin-top: 15px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-link {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--primary);
+        }
 
         /* --- ESTILOS BIO & IDIOMAS --- */
-        .lang-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border); }
-        .lang-item { display: flex; align-items: center; gap: 10px; }
-        .lang-name { font-weight: 600; color: #fff; }
-        .lang-level { font-size: 0.85rem; color: var(--primary); border: 1px solid var(--primary); padding: 2px 8px; border-radius: 4px; }
-        
-        .education-block { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
-        .uni-name { font-size: 1.2rem; color: #fff; font-weight: 700; margin-bottom: 5px; }
-        .uni-degree { color: var(--primary); }
+        .lang-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .lang-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lang-name {
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .lang-level {
+            font-size: 0.85rem;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .education-block {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .uni-name {
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .uni-degree {
+            color: var(--primary);
+        }
 
         /* --- CONTACT INFO --- */
-        .contact-details { display: flex; flex-direction: column; gap: 15px; margin-top: 30px; align-items: center; }
-        .contact-item { display: flex; align-items: center; gap: 10px; color: var(--text-gray); text-decoration: none; font-size: 1.1rem; transition: 0.3s; }
-        .contact-item:hover { color: var(--primary); }
-
-        .tech-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .tag {
-            background: rgba(255, 255, 255, 0.05); padding: 6px 14px; border-radius: 8px;
-            font-size: 0.85rem; color: var(--text-gray); border: 1px solid transparent; transition: 0.3s;
-            display: flex; align-items: center; gap: 8px;
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+            align-items: center;
         }
-        .tag:hover { border-color: var(--secondary); color: #fff; background: rgba(157, 0, 255, 0.1); }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .contact-item:hover {
+            color: var(--primary);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            border: 1px solid transparent;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tag:hover {
+            border-color: var(--secondary);
+            color: #fff;
+            background: rgba(157, 0, 255, 0.1);
+        }
 
         /* --- FOOTER --- */
         footer {
-            text-align: center; padding: 20px; color: var(--text-gray); font-size: 0.8rem;
-            border-top: 1px solid var(--border); margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            margin-top: 50px;
         }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .nav-links { display: none; }
-            .cards-container { grid-template-columns: 1fr; }
-            .lang-grid { grid-template-columns: 1fr; }
-            .cert-grid { grid-template-columns: 1fr; }
+            h1 {
+                font-size: 3rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .lang-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
-        /* --- ANIMACIÓN --- */
-        .hidden { 
-            opacity: 0; 
-            filter: blur(10px); 
-            transform: translateY(40px); 
+        /* --- ANIMACIÓN DE ENTRADA MEJORADA --- */
+        .hidden {
+            opacity: 0;
+            filter: blur(10px);
+            /* Efecto de desenfoque inicial */
+            transform: translateY(40px);
             transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+            /* Easing suave */
         }
-        .show { opacity: 1; filter: blur(0); transform: translateY(0); }
-        
-        .stagger-1 { transition-delay: 100ms; }
-        .stagger-2 { transition-delay: 200ms; }
-        .stagger-3 { transition-delay: 300ms; }
-        .stagger-4 { transition-delay: 400ms; }
-        .stagger-5 { transition-delay: 500ms; }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        /* Retrasos en cascada para elementos hijos */
+        .stagger-1 {
+            transition-delay: 100ms;
+        }
+
+        .stagger-2 {
+            transition-delay: 200ms;
+        }
+
+        .stagger-3 {
+            transition-delay: 300ms;
+        }
+
+        .stagger-4 {
+            transition-delay: 400ms;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="ambient-light light-1"></div>
@@ -277,12 +659,13 @@
         <div class="hero-content">
             <div class="role-badge hidden">INGENIERO INFORMÁTICO</div>
             <h1 class="hidden stagger-1">Jose Colomina <br><span class="gradient-text">Alvarez</span></h1>
-            
+
             <div class="typewriter hidden stagger-2">
                 <span id="typing-text"></span><span class="cursor"></span>
             </div>
-            
-            <p class="hidden stagger-3" style="margin-top: 20px; margin-bottom: 50px; color: var(--text-gray); max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+
+            <p class="hidden stagger-3"
+                style="margin-top: 20px; margin-bottom: 50px; color: var(--text-gray); max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6;">
                 Transformo datos complejos en soluciones inteligentes. <br>
                 Especialista en arquitecturas escalables y el futuro de la IA.
             </p>
@@ -295,12 +678,13 @@
 
     <section id="stack">
         <h2 class="hidden">Arsenal <span style="color:var(--primary)">Tecnológico</span></h2>
-        
+
         <div class="cards-container" id="cards">
             <div class="card hidden stagger-1">
                 <div class="card-content">
                     <div class="card-title"><i class="fas fa-brain"></i> Data & IA</div>
-                    <p style="color: var(--text-gray);">Mi especialidad principal. Gestión masiva de datos y modelos predictivos.</p>
+                    <p style="color: var(--text-gray);">Mi especialidad principal. Gestión masiva de datos y modelos
+                        predictivos.</p>
                     <div class="tech-tags">
                         <div class="tag"><i class="devicon-python-plain"></i> Python</div>
                         <div class="tag"><i class="fas fa-database"></i> SQL</div>
@@ -350,7 +734,7 @@
 
     <section id="experience">
         <h2 class="hidden">Trayectoria <span style="color:var(--secondary)">Profesional</span></h2>
-        
+
         <div class="experience-container">
             <div class="card hidden stagger-1">
                 <div class="card-content">
@@ -365,7 +749,7 @@
                         Cliente: Generalitat de Catalunya
                     </div>
                     <p style="color: var(--text-gray);">
-                        Desarrollo y mantenimiento de sistemas críticos para la administración pública. 
+                        Desarrollo y mantenimiento de sistemas críticos para la administración pública.
                         Implementación de soluciones escalables y optimización de procesos existentes.
                     </p>
                     <div class="tech-tags">
@@ -389,7 +773,7 @@
                         Cliente: CaixaBank
                     </div>
                     <p style="color: var(--text-gray);">
-                        Participación activa en proyectos del sector bancario, asegurando la integridad de datos 
+                        Participación activa en proyectos del sector bancario, asegurando la integridad de datos
                         y colaborando en la migración de sistemas legacy.
                     </p>
                     <div class="tech-tags">
@@ -404,31 +788,14 @@
 
     <section id="projects">
         <h2 class="hidden">Proyectos <span style="color:var(--primary)">Destacados</span></h2>
-        
+
         <div class="cards-container">
             <div class="card hidden stagger-1">
                 <div class="card-content">
-                    <div class="card-title"><i class="fas fa-shield-alt"></i> Detección de Fraude Real-Time</div>
-                    <p style="color: var(--text-gray);">
-                        Arquitectura híbrida Event-Driven. Ingesta de transacciones masivas con Spring Boot, streaming vía Apache Kafka y análisis de fraude instantáneo con motor ML en Python.
-                    </p>
-                    <div class="tech-tags">
-                        <div class="tag">Spring Boot</div>
-                        <div class="tag">Kafka</div>
-                        <div class="tag">Python ML</div>
-                        <div class="tag">Docker</div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/josecolomina" target="_blank" class="project-link"><i class="fab fa-github"></i> Ver Código</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card hidden stagger-2">
-                <div class="card-content">
                     <div class="card-title"><i class="fas fa-chart-line"></i> Analizador de Datos</div>
                     <p style="color: var(--text-gray);">
-                        Pipeline de datos automatizado con Python que procesa grandes volúmenes de información y genera visualizaciones predictivas.
+                        Pipeline de datos automatizado con Python que procesa grandes volúmenes de información y genera
+                        visualizaciones predictivas.
                     </p>
                     <div class="tech-tags">
                         <div class="tag">Python</div>
@@ -436,16 +803,18 @@
                         <div class="tag">Matplotlib</div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/josecolomina/Analizador-de-datos" target="_blank" class="project-link"><i class="fab fa-github"></i> Ver Código</a>
+                        <a href="https://github.com/josecolomina/Analizador-de-datos" target="_blank"
+                            class="project-link"><i class="fab fa-github"></i> Ver Código</a>
                     </div>
                 </div>
             </div>
 
-            <div class="card hidden stagger-3">
+            <div class="card hidden stagger-2">
                 <div class="card-content">
                     <div class="card-title"><i class="fas fa-network-wired"></i> API REST Segura</div>
                     <p style="color: var(--text-gray);">
-                        Arquitectura de microservicios con Spring Boot, implementando seguridad con JWT y documentación automática con Swagger.
+                        Arquitectura de microservicios con Spring Boot, implementando seguridad con JWT y documentación
+                        automática con Swagger.
                     </p>
                     <div class="tech-tags">
                         <div class="tag">Java</div>
@@ -453,16 +822,18 @@
                         <div class="tag">JWT</div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/josecolomina/Api-Rest" target="_blank" class="project-link"><i class="fab fa-github"></i> Ver Código</a>
+                        <a href="https://github.com/josecolomina/Api-Rest" target="_blank" class="project-link"><i
+                                class="fab fa-github"></i> Ver Código</a>
                     </div>
                 </div>
             </div>
 
-            <div class="card hidden stagger-4">
+            <div class="card hidden stagger-3">
                 <div class="card-content">
                     <div class="card-title"><i class="fas fa-robot"></i> Chatbot IA (RAG)</div>
                     <p style="color: var(--text-gray);">
-                        Asistente inteligente capaz de responder preguntas sobre documentación privada utilizando modelos LLM y bases de datos vectoriales.
+                        Asistente inteligente capaz de responder preguntas sobre documentación privada utilizando
+                        modelos LLM y bases de datos vectoriales.
                     </p>
                     <div class="tech-tags">
                         <div class="tag">LangChain</div>
@@ -470,16 +841,18 @@
                         <div class="tag">Vector DB</div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/josecolomina/chatbot-ia-rag-" target="_blank" class="project-link"><i class="fab fa-github"></i> Ver Código</a>
+                        <a href="https://github.com/josecolomina/chatbot-ia-rag-" target="_blank"
+                            class="project-link"><i class="fab fa-github"></i> Ver Código</a>
                     </div>
                 </div>
             </div>
 
-            <div class="card hidden stagger-5">
+            <div class="card hidden stagger-4">
                 <div class="card-content">
                     <div class="card-title"><i class="fas fa-tachometer-alt"></i> Dashboard Real-Time</div>
                     <p style="color: var(--text-gray);">
-                        Panel de control interactivo para visualización de métricas financieras en tiempo real, con ingesta de datos continua.
+                        Panel de control interactivo para visualización de métricas financieras en tiempo real, con
+                        ingesta de datos continua.
                     </p>
                     <div class="tech-tags">
                         <div class="tag">Streamlit</div>
@@ -487,7 +860,30 @@
                         <div class="tag">ETL</div>
                     </div>
                     <div class="project-links">
-                        <a href="https://github.com/josecolomina/-Dashboard-Real-Time" target="_blank" class="project-link"><i class="fab fa-github"></i> Ver Código</a>
+                        <a href="https://github.com/josecolomina/-Dashboard-Real-Time" target="_blank"
+                            class="project-link"><i class="fab fa-github"></i> Ver Código</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card hidden stagger-1">
+                <div class="card-content">
+                    <div class="card-title"><i class="fas fa-shield-alt"></i> Detección Fraude Real-Time</div>
+                    <p style="color: var(--text-gray);">
+                        Sistema híbrido de alto rendimiento orientado a eventos. Ingesta con Java/Spring, streaming vía
+                        Kafka y detección de anomalías con Python (Isolation Forest).
+                    </p>
+                    <div class="tech-tags">
+                        <div class="tag">Spring Boot</div>
+                        <div class="tag">Apache Kafka</div>
+                        <div class="tag">Python ML</div>
+                        <div class="tag">Docker</div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/josecolomina/Sistema-de-Detecci-n-de-Fraude" target="_blank"
+                            class="project-link">
+                            <i class="fab fa-github"></i> Ver Código
+                        </a>
                     </div>
                 </div>
             </div>
@@ -498,7 +894,7 @@
         <div class="card hidden" style="max-width: 800px; width: 100%;">
             <div class="card-content">
                 <h2 style="margin-bottom: 30px;">Bio & Formación</h2>
-                
+
                 <div class="education-block">
                     <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
                         <i class="fas fa-graduation-cap" style="font-size: 2rem; color: var(--secondary);"></i>
@@ -511,7 +907,9 @@
 
                 <p style="font-size: 1.1rem; color: #ccc; line-height: 1.8;">
                     Tengo <strong>26 años</strong> y una curiosidad insaciable por la tecnología.
-                    Me apasiona el <span style="color: var(--primary)">Desarrollo de Software</span>, pero mi verdadera vocación se encuentra en la intersección con el <span style="color: var(--secondary)">Big Data</span> y la <span style="color: var(--secondary)">Inteligencia Artificial</span>.
+                    Me apasiona el <span style="color: var(--primary)">Desarrollo de Software</span>, pero mi verdadera
+                    vocación se encuentra en la intersección con el <span style="color: var(--secondary)">Big
+                        Data</span> y la <span style="color: var(--secondary)">Inteligencia Artificial</span>.
                 </p>
 
                 <h3 style="margin-top: 30px; margin-bottom: 15px; color: #fff;">Formación Continua</h3>
@@ -575,9 +973,9 @@
 
     <section id="contact" style="text-align: center;">
         <h2 class="hidden" style="margin-bottom: 30px;">¿Iniciamos el siguiente proyecto?</h2>
-        
+
         <a href="mailto:josecolomina4@gmail.com" class="btn hidden">Contactar Ahora</a>
-        
+
         <div class="hidden contact-details">
             <a href="tel:+34692319727" class="contact-item">
                 <i class="fas fa-phone"></i> +34 692 31 97 27
@@ -586,12 +984,16 @@
                 <i class="fas fa-envelope"></i> josecolomina4@gmail.com
             </a>
         </div>
-        
+
         <div class="hidden" style="margin-top: 40px; font-size: 2rem;">
-            <a href="https://www.linkedin.com/in/jose-colomina-b097b0261/" target="_blank" style="color: var(--text-gray); margin: 0 20px; transition: 0.3s;" onmouseover="this.style.color='#0e76a8'" onmouseout="this.style.color='var(--text-gray)'">
+            <a href="https://www.linkedin.com/in/jose-colomina-b097b0261/" target="_blank"
+                style="color: var(--text-gray); margin: 0 20px; transition: 0.3s;"
+                onmouseover="this.style.color='#0e76a8'" onmouseout="this.style.color='var(--text-gray)'">
                 <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://github.com/josecolomina" target="_blank" style="color: var(--text-gray); margin: 0 20px; transition: 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-gray)'">
+            <a href="https://github.com/josecolomina" target="_blank"
+                style="color: var(--text-gray); margin: 0 20px; transition: 0.3s;" onmouseover="this.style.color='#fff'"
+                onmouseout="this.style.color='var(--text-gray)'">
                 <i class="fab fa-github"></i>
             </a>
         </div>
@@ -604,20 +1006,28 @@
     </footer>
 
     <script>
+
+        // --- SCRIPT PARA AÑO AUTOMÁTICO ---
         document.getElementById("year").textContent = new Date().getFullYear();
-        
-        // EFECTO SPOTLIGHT
+        // 1. EFECTO SPOTLIGHT EN TARJETAS
         document.body.onmousemove = e => {
-            for(const card of document.getElementsByClassName("card")) {
+            for (const card of document.getElementsByClassName("card")) {
                 const rect = card.getBoundingClientRect(),
-                      x = e.clientX - rect.left,
-                      y = e.clientY - rect.top;
+                    x = e.clientX - rect.left,
+                    y = e.clientY - rect.top;
                 card.style.setProperty("--mouse-x", `${x}px`);
                 card.style.setProperty("--mouse-y", `${y}px`);
             }
+            // También aplicamos a las nuevas tarjetas de certificados
+            for (const cert of document.getElementsByClassName("cert-card")) {
+                const rect = cert.getBoundingClientRect(),
+                    x = e.clientX - rect.left,
+                    y = e.clientY - rect.top;
+                // Nota: cert-card no usa la variable spotlight, pero si quisieras añadirlo en el futuro, ya está trackeando
+            }
         };
 
-        // EFECTO TYPEWRITER
+        // 2. EFECTO TYPEWRITER
         const textToType = "Software Developer | Data Enthusiast | AI Explorer";
         const typeWriterElement = document.getElementById('typing-text');
         let i = 0;
@@ -631,22 +1041,25 @@
         }
         setTimeout(typeWriter, 1000);
 
-        // ANIMACIÓN DE SCROLL
+        // 3. ANIMACIÓN DE SCROLL CON EFECTO BLUR Y CASCADA
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('show');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.1 }); // Se activa cuando el 10% del elemento es visible
 
         document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
-        // PARALLAX SUAVE
+        // 4. EFECTO PARALLAX SUAVE EN EL BACKGROUND
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
+            // Movemos el background position verticalmente más lento que el scroll
             document.body.style.backgroundPosition = `0px ${scrolled * 0.5}px`;
         });
+
     </script>
 </body>
+
 </html>
